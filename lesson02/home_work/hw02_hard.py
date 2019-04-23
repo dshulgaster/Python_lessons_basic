@@ -30,8 +30,8 @@ print(f"I. y = -12x + 11111140.2121 = {y} (при х = 2.5)\n")
 #  (т.е. 2 символа для дня, 2 - для месяца, 4 - для года)
 
 print(f"II. Проверка даты на корректность.")
-# date = input("Введите дату в формате:'dd.mm.yyyy'\n")
-date = '21.04.2019'
+date = input("Введите дату в формате:'dd.mm.yyyy'\n")
+# date = '21.04.2019'
 day = month = year = -1 # заранее будем считать дату некорректной, если попытка исключения сработает
 daysMonth = {1: 31, 2: 28, 3: 31, 4: 30,
              5: 31, 6: 30, 7: 31,
@@ -41,14 +41,14 @@ try:
     day = int(date[0:2])
     month = int(date[3:5])
     year = int(date[6:10])
-    maxDay = daysMonth[month]
-    # print(maxDay)
 except ValueError:
     day = month = year = "Error"
-    maxDay = 30
 
+maxDay = 30
 if len(date) == 10 and date.count(".")== 2 and day != "Error":
     if month > 0 and month <=12 and year > 0:
+        maxDay = daysMonth[month]
+        print(maxDay)
         if day > 0 and day <= maxDay:
             itsOk = "корректный день"
         else:
@@ -81,7 +81,7 @@ print(f"Формат даты {itsOk}\n")
 # Вавилонцы решили построить удивительную башню —
 # расширяющуюся к верху и содержащую бесконечное число этажей и комнат.
 # Она устроена следующим образом — на первом этаже одна комната,
-# затем идет два этажа, на каждом из которых по две комнаты, 
+# затем идет два этажа, на каждом из которых по две комнаты,
 # затем идёт три этажа, на каждом из которых по три комнаты и так далее:
 #         ...
 #     12  13  14
@@ -107,40 +107,34 @@ print(f"Формат даты {itsOk}\n")
 # Выход: 5 3
 
 print(f"III. Перевернутая башня.")
-# заполняем вложенный массив [[1], [2, 3, 4, 5], [6, 7, 8, 9], ...]
-# numberRoom = 13
 floor = 2   # этаж
-numberRooms = [i for i in range(1, 100)] # номер квартиры
-startRoomThisFloor = 2
+numberRooms = [i for i in range(1, 2000000)] # номер квартиры
+startRoomThisFloor = 4
 amountRoomThisFloor = 4
 endRoomThisFloor = 6
 roomsThisFloor = []
-allRooms = [[1]]
+allRooms = [[1], [2, 3]]
+lenSquare = 2
 
-for nR in range(3):    #numberRooms:
-    roomsThisFloor.clear()
-    for i in range(startRoomThisFloor, endRoomThisFloor):
-        roomsThisFloor.append(i)
-    # print(f"roomsThisFloor = {roomsThisFloor}")
-    allRooms.append(roomsThisFloor[:])
+for nR in range(180):    #numberRooms:
     floor += 1
-    startRoomThisFloor = endRoomThisFloor
-    endRoomThisFloor = startRoomThisFloor + floor ** 2
-print(f"allRooms = {allRooms}")
+    for square in range(0, lenSquare+1):
+        roomsThisFloor.clear()
+        for i in range(startRoomThisFloor, endRoomThisFloor):
+            roomsThisFloor.append(i)
+        lenSquare = len(roomsThisFloor)
+        startRoomThisFloor = endRoomThisFloor
+        endRoomThisFloor = startRoomThisFloor + floor
+        allRooms.append(roomsThisFloor[:])
+# print(f"allRooms = {allRooms}")
 
-
-# yourRoom = input("Введите номер квартиры: \n")
-yourRoom = 5
-
+allBreak = 0
+yourRoom = input("Введите номер квартиры: \n")
 for id1, item in enumerate(allRooms):
+    if allBreak == 1:
+        break
     for id2, item in enumerate(allRooms[id1]):
-        if item == yourRoom:
-            # print(id1)
-            # print(id2)
+        if int(item) == int(yourRoom):
             print(f"этаж {id1+1} слева {id2+1} комната")
-
-# for i in range(len(allRooms)):  # i – номер строки
-#     for j in range(len(allRooms[i])):   # j – номер столбца
-#         print("{:5d}".format(allRooms[i][j]), end = "")
-#         # print(allRooms.index(yourRoom))
-#     print()
+            allBreak = 1
+            break
