@@ -8,16 +8,18 @@ import math
 import random
 
 print("I. НОВЫЙ список из элементов исходного.")
-list1 = [5, -15, 25, 27, 3, -48, 64]
+# list1 = [5, -15, 25, 27, 3, -48, 64]  # список для тестов
+list1 = [random.randint(-10, 100) for i in range(15)]   # рандомный список
+print(f"Исходный список: {list1}")
 list2 = []
 for i in list1:
     if i > 0:
         sqrtI = math.sqrt(i)
-        if sqrtI*10//10 == sqrtI:
+        if sqrtI % 1 == 0:  # вариант проверки на целое число нравится больше, чем первоначальное sqrtI*10//10 == sqrtI
             integerI = int (sqrtI)
             # print(integerI)
             list2.append(integerI)
-print(f"Новый список: {list2}\n")
+print(f"Новый список (целые квадратные корни): {list2}\n")
 
 # Задача-2: Дана дата в формате dd.mm.yyyy, например: 02.11.2013.
 # Ваша задача вывести дату в текстовом виде, например: второе ноября 2013 года.
@@ -63,12 +65,12 @@ print(f"Cписок c произвольными числами от -100 до 1
 print("IV. Вывести список: а) неповторяющиеся элементы исходного списка; "
       "б) элементы исходного, которые не имеют повторений")
 anyList = [random.randint(0, 4) for i in range(5)]
+print(f"Исходный список: {anyList}")
 anyList1 = list(set(anyList))
+print(f"а) список без повторяющихся элементов: {anyList1}")
 anyList2 = anyList1.copy()
 for i1 in anyList1:
-    if anyList.count(i1) > 1:
+    print(f"i1 = {i1}, anyList.count(i1): {anyList.count(i1)}")
+    if anyList.count(i1) > 1:   # count - кол-во данного значения в списке
         anyList2.remove(i1)
-
-print(f"Исходный список: {anyList}")
-print(f"а) список без повторяющихся элементов: {anyList1}")
 print(f"б) список, очищенный от всех повторяющихся элементов: {anyList2}")
