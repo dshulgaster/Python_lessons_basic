@@ -1,3 +1,4 @@
+import random
 # Задача-1:
 # Дан список фруктов.
 # Напишите программу, выводящую фрукты в виде нумерованного списка,
@@ -14,8 +15,20 @@
 # Подсказка: воспользоваться методом .format()
 print("I. Выводим наименование фруктов, используя метод .format:")
 fruit = ["яблоко", "банан", "киви", "арбуз"]
-print("1. {0} \n2. {1} \n3. {2}\n4. {3}\n".format(fruit[0], fruit[1], fruit[2], fruit[3]))
-# print(f"Пробуем альтернативный вывод (модно, современно):\n 1. {fruit[0]} \n2. {fruit[1]} \n3. {fruit[2]}\n4. {fruit[3]}\n")
+print("Вариант 1.\n1. {0:>6} \n2. {1:>6} \n3. {2:>6}\n4. {3:>6}\n".format(fruit[0], fruit[1], fruit[2], fruit[3]))
+
+print(f"Вариант 2 (через f(модно, современно):\n1. {fruit[0]:>6} \n2. {fruit[1]:>6} \n3. {fruit[2]:>6}\n4. {fruit[3]:>6}\n")
+
+print(f"Вариант 3:")
+maxLength = 1
+for elFruit in fruit:
+    if maxLength < len(elFruit):
+        maxLength = len(elFruit)
+indentFormat = "{:>" + str(maxLength) + "}"
+for i in range(len(fruit)):
+    # print(str(i+1) + ". " + indentFormat.format(fruit[i]))
+    print(f"{i+1}. {fruit[i]:>{maxLength}}")  # PEP 498
+print("\n")
 
 # Задача-2:
 # Даны два произвольные списка.
@@ -47,7 +60,9 @@ print("Список 1 после удаления дубликатов: {}\n".fo
 # Получите НОВЫЙ список из элементов исходного, выполнив следующие условия:
 # если элемент кратен двум, то разделить его на 4, если не кратен, то умножить на два.
 print("III. НОВЫЙ список из элементов исходного.")
-list4 = [5, 15, 92, 3, 48]
+# list4 = [5, 15, 92, 3, 50]
+list4 = [random.randint(0, 100) for i in range(15)]
+print(f"Исходный список: {list4}")
 list5 = []
 for i4 in list4:
     if (i4 % 2) == 0:
