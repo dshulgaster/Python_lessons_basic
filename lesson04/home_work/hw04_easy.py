@@ -31,7 +31,7 @@ print(fruitList3)
 # + Элемент не кратен 4
 import random
 print("\nЗадача 3. Получить список из элементов исходного.\n", '-' * 60, sep='')
-randomList = [random.randint(0, 99) for i in range(20)]
+randomList = [random.randint(-99, 99) for i in range(20)]
 finalList = [i for i in randomList if i % 3 == 0 and i >= 0 and i % 4 != 0]
 print(f"Исходный список: {randomList}")
 print(f"Обработанный список: {finalList}")
