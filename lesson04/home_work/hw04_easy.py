@@ -14,10 +14,12 @@ print(f"Новый список: {newList}")
 # Задание-2:
 # Даны два списка фруктов.
 # Получить список фруктов, присутствующих в обоих исходных списках.
-print("Задача 2. Получить список фруктов из двух списков продуктов\n", '-' * 54, sep='')
+print("\nЗадача 2. Получить список фруктов из двух списков продуктов\n", '-' * 60, sep='')
 fruitList1 = ["яблоки", "груши", "абрикосы", "виноград"]
 fruitList2 = ["манго", "абрикосы", "сливы", "яблоки"]
 fruitList3 = [i for i in fruitList1 if i in fruitList2]
+print(fruitList1)
+print(fruitList2)
 print(fruitList3)
 
 
@@ -27,3 +29,9 @@ print(fruitList3)
 # + Элемент кратен 3
 # + Элемент положительный
 # + Элемент не кратен 4
+import random
+print("\nЗадача 3. Получить список из элементов исходного.\n", '-' * 60, sep='')
+randomList = [random.randint(0, 99) for i in range(20)]
+finalList = [i for i in randomList if i % 3 == 0 and i >= 0 and i % 4 != 0]
+print(f"Исходный список: {randomList}")
+print(f"Обработанный список: {finalList}")
