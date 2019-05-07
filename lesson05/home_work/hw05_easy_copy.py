@@ -32,7 +32,6 @@ def del_dir_1__9():
         except FileNotFoundError:
             print(f"Невозможно удалить папку по данному пути: {path_i}")
 
-
 def show_dir():
     '''
     show_dir: функция вывода папок в текущей директории
@@ -56,7 +55,6 @@ def show_dir():
     #     print(dirs[1])
     #     break
 
-
 def copy_file():
     '''
     copy_file: функция копирования копии текущего файла
@@ -73,46 +71,6 @@ def copy_file():
             print(f"Невозможно cкопировать файл")
     else:
         print(f"Такой файл уже существует")
-
-
-# функция для заданий hw05_normal
-def change_dir(newDir):
-    '''
-    Запрашиваем у пользователя наименование папки, в которую
-    необходимо перейти и осуществляем переход
-    :return:
-    '''
-    dirPath = os.path.join(os.getcwd(), newDir)
-    if os.path.exists(dirPath):
-        os.chdir(dirPath)
-        print(f"Переход в папку '{newDir}' осуществлен. Полный путь: {os.getcwd()}.")
-    else:
-        print(f"Переход в папку '{newDir}' невозможен")
-
-
-# функция для заданий hw05_normal
-def del_dir(name):
-    '''
-    del_dir: Запрашиваем у пользователя наименование папки и удаляем указанную директорию
-    '''
-    pathDel = os.path.join(os.getcwd(), name)
-    try:
-        os.rmdir(pathDel)
-        print(f"Удалена папка {name} по пути: {pathDel}")
-    except FileNotFoundError:
-        print(f"Невозможно удалить папку по данному пути: {pathDel}")
-
-# функция для заданий hw05_normal
-def make_dir(name):
-    '''
-    make_dir: Запрашиваем у пользователя наименование папки и создаем ее
-    '''
-    pathMake = os.path.join(os.getcwd(), name)
-    try:
-        os.mkdir(pathMake)
-        print(f"Создана папка {name} по пути: {pathMake}")
-    except FileNotFoundError:
-        print(f"Невозможно создать папку по данному пути: {pathMake}")
 
 
 if __name__ == '__main__':
